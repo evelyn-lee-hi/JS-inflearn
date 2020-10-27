@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>if-else if-else</title>
+</head>
+<body>
+    <script>
+        // 입력받은 문자가 홀수인지 짝수인지를 알려주는 프로그램 작성
+        var str = prompt("Input number.");
+        var n = Number(str);
+        if (n % 2 == 0)
+            document.writeln(n + "은 짝수입니다.");
+        else 
+            document.writeln(n + "은 홀수입니다.");
+    </script>
+
+    <script>
+        // 입력받은 문자가 대문자로 되어 있으면 '대문자 문장입니다.'
+        // 소문자로 되어 있으면 '소문자 문장입니다.'
+        // 그 외에는 '보통 문장입니다.'라고 출력하는 프로그램 작성
+        var string = prompt("문장을 입력하세요.");
+
+        if (string == string.toUpperCase())
+            document.writeln("대문자 문장입니다.");
+        else if (string == string.toLowerCase())
+            document.writeln("소문자 문장입니다.");
+        else 
+            document.writeln("보통 문장입니다.");
+    </script>
+
+</body>
+</html>
