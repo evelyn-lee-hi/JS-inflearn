@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find Prime</title>
+</head>
+<body>
+    <script>
+        var n = Number(prompt("2이상의 정수를 입력하세요."));
+        if (n == 2)
+            document.writeln("2는 소수입니다.");
+        else {
+            for (var i = 2; i < n; i++)
+                if(n % i == 0) {
+                    document.writeln(n + "은 소수가 아닙니다.");
+                    break;
+                }
+                else if (i == n - 1)
+                    document.writeln(n + "은 소수입니다.");
+        }
+        //  ------●●FEEDBACK●●------
+        //  ★for (var i = 2; i < n; i++)
+        //    → 이 식에서 i는 2로 시작하고, n이 i보다 커야 반복문이 실행된다.
+        //      따라서 n이 2일 경우 반복문이 실행되지 못한다.
+        //      이러한 문제를 해결하기 위해서 변수를 선언한다.
+        //
+        //   ★var isPrime = true;
+        //     → prompt 실행 전에 소수가 맞다라는 의미의 불린 값을 변수에 넣어놓으면
+        //       n = 2 라서 반복문이 실행되지 않는 경우에도 isPrime의 값은 true가 된다.
+        //     → 반복문을 통해서 소수가 아닌 것이 된다면 isPrime = false;
+        //
+        //   ★if (isPrime) else 조건문으로 화면에 출력 
+        //  ------●●--------●●------
+    </script>
+</body>
+</html>
