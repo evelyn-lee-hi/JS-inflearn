@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>white, for exercise</title>
+    <style>
+        body {
+            padding: 3em;
+            font-size: 2em;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        // while 문을 사용해서 1부터 100까지 더한 수 구하기
+        var n = 1;
+        var answer = 0;
+        while(n <= 100) {
+            answer += n;
+            n++;
+        }
+        document.write("1부터 100까지의 합은 " + answer + "입니다.");
+
+    </script>
+
+    <script>
+        //----------------------------------------------------------
+        // 사용자가 입력한 수들의 갯수와 합을 구하는 프로그램 작성 (단 0을 입력받으면 입력 종료)
+        /*
+        var str = prompt("수를 입력해주세요.");
+        var number = Number(str);
+        va r sum = Number(str);
+        var i = 1;
+
+        while (number != 0) {
+            str = prompt("수를 또 입력해주세요.(0을 입력하면 종료됩니다.)");
+            number = Number(str);
+            sum += number;
+            i++;
+        }
+        document.writeln("입력하신 횟수는 0포함 " + i + "번이고, 입력하신 값의 합은 " + sum + "입니다.");
+        */
+
+        var sum = 0;
+        var n = -1;
+        // 0을 입력한 것은 제외시키기 위해서 count를 -1로 시작!!
+        var count = -1;
+        
+        while (n != 0) {
+            n = Number(prompt("숫자를 입력해주세요(0 = 종료)"));
+            sum += n;
+            count++;
+            console.log(count, n, sum);
+        }
+        document.write("입력한 " + count + "수의 합은 " + sum + "입니다.");
+
+    </script>
+
+    <script>
+        // 1에서 100까지의 짝수의 합을 구하는 프로그램 작성
+        var summ = 0; 
+        for (var i = 1; i <= 100; i++) {
+            if (i % 2 == 0) {
+                summ += i;
+                console.log(i, summ);
+            }
+        }
+        document.writeln("1에서 100까지의 짝수의 합은 " + summ + "입니다.");
+    </script>
+
+    <script>
+        // 100, 99, 98, .. 0까지 출력하는 프로그램 작성
+        for (var i = 100; i >= 0; i--) {
+            console.log(i);
+        }
+
+    </script>
+</body>
+</html>
