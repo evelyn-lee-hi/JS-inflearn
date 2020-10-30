@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>소수 찾기 연습</title>
+    <link rel="stylesheet" href="reset.css">
+    <style>
+        body {
+            background-color: seashell;
+            padding: 3em;
+        }
+        #header {
+            width: 240px;
+            border: 5px solid tomato;
+            border-radius: 30px;
+            margin-bottom: 1em;
+
+            font-size: 2em;
+            color: #555;
+            text-align: center;
+            line-height: 2em;
+        }
+        #result {
+            width: 350px;
+            background-color: rgb(255, 237, 224);
+            box-sizing: border-box;
+            padding: 1em;
+            border-radius: 20px;
+
+            color: #555;
+            line-height: 1.6;
+
+        }
+    </style>
+</head>
+<body>
+    <h1 id="header">소수 목록들</h1>
+    <div id="result"></div>
+
+    <script>
+        var numbers = {};
+        numbers.all = [];
+        numbers.prime = [];
+        numbers.max_num = "";
+
+        numbers.addAllNumbers = function(max_num) {
+            this.max_num = max_num;
+            for(var i = 2; i <= max_num; i++) {
+                this.all.push(i);
+            }
+        };
+
+        numbers.isPrime = function(number) {
+            for(var i = 2; i < number; i++) {
+                if ( number % i == 0) {
+                    return false;
+                }
+            }
+            return true;
+        };
+
+        numbers.calcPrimes = function() {
+            for (var i = 0; i < this.all.length; i++) {
+                var n = this.all[i];
+                if (this.isPrime(n)) {
+                    this.prime.push(n);
+                }
+            }
+        };
+
+        numbers.getAllPrimes = function() {
+            var ret = "";
+            ret += this.max_num + "까지 총 소수의 개수: " + this.prime.length + "<br>";
+            for(var i = 0; i < this.prime.length; i++) {
+                ret += (i + 1) + "번째 소수: " + this.prime[i] + "<br>"; 
+            }
+            return ret;
+        };
+
+        numbers.addAllNumbers(10000);
+        numbers.calcPrimes();
+        document.getElementById("result").innerHTML = numbers.getAllPrimes();
+    </script>
+</body>
+</html>
