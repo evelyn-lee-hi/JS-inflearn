@@ -46,32 +46,44 @@
     <div id="gugudan"></div>
     <script>
         /*
-        var results = [];
+        var result = [];
         var gugudan = document.getElementById("gugudan");
         
         for (var n = 2; n <= 9; n++) {
             for (var i = 1; i <= 9; i++) {
-                results.push(n * i);
+                result.push(n * i);
             }
             gugudan.innerHTML += "<h2>" + n + "단</h2>";
             for (var i = 0; i < 9; i++) {
                 var str = "";
-                str += n + " * " + (i + 1) + " = " + results[9 * (n - 2) + i] + "<br>";
+                str += n + " * " + (i + 1) + " = " + result[9 * (n - 2) + i] + "<br>";
                 gugudan.innerHTML += str;
             }
         }
         */
+        // ●●● 내가 푼 풀이에서는
+        // result.push(n * i)
+        // 구구단 2단부터 9단까지의 값을 result 배열에 계속 쌓았음. 
+        // 그리고 값을 출력할 때 result 배열의 인덱스 값을 [9 * (n - 2) + i]라고 해서 출력함.
+        //  → 가독성이 좋지 않음. 인덱스를 봤을 때 어떤 값을 넣은 것인지 한 눈에 확인하기 어려움..
 
+        // ●●● 선생님이 푼 풀이에서는
+        // result[i] = n * i;
+        // 구구단 단 수가 바뀔 때마다 값을 덮어씀.
+        // 인덱스 값을 복잡하기 계산해서 적을 필요 없이 반복문 그대로 사용할 수 있음.
+        //  → 가독성이 좋아짐. 어떤 값을 출력하려는 지 한 눈에 확인하기 쉬움!!! 
+        
         var result = [];
         var gugudan = document.getElementById("gugudan");
 
         for (var n = 2; n <= 9; n++) {
             // calculate
             for (var i = 1; i <= 9; i++) {
+                // n이 바뀔 때마다 result 배열의 원소를 새로 덮음.
                 result[i] = n * i;
             }
             // title
-            gugudan.innerHTML += "<h2>" + n + "단</h2>" ;
+            gugudan.innerHTML += "<h2>" + n + "단</h2>";
             // print
             for (var i = 1; i <= 9; i++) {
                 var str = "";
