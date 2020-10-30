@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>함수 활용 | 구구단 구현</title>
+    <link rel="stylesheet" href="reset.css">
+    <style>
+        body {
+            background-color: linen;
+            padding: 3em;
+        }
+        #header {
+            width: 270px;
+            background-color: tomato;
+            padding: 0.5em;
+            margin-bottom: 25px;
+            border-radius: 20px;
+
+            font-family:'Gill Sans', 'Gill Sans MT', 'Trebuchet MS', sans-serif;
+            font-size: 1.5rem;
+            text-align: center;
+            color: white;
+        }
+        #content {
+            width: 320px;
+            background-color: rgba(255, 255, 255, 0.5);
+            border-radius: 20px;
+            box-sizing: border-box;
+            padding-left: 1.3em;
+            /* h2의 margin-top적용을 시키기 위해서 padding 조금 추가해줌. */
+            padding-top: 0.3em;
+
+            color: #666;
+            line-height: 1.5;
+        }
+        h2 {
+            font-size: 1.3em;
+            font-weight: 700;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+    <header id="header">Gugudan Program</header>
+    <section id="content"></section>
+
+    <script>
+
+        function calculateNDan(x) {
+            var ret = [];
+            for(var i = 1; i <= 9; i++) {
+                ret[i] = x * i;
+            }
+            return ret;   //➔ x단의 결과값을 대입한 ret 배열을 반환하는 함수
+        }
+
+        function printResult(x, ret) {
+            var content = document.getElementById("content");
+            content.innerHTML += "<h2>" + x + "단</h2>";
+            for(var i = 1; i <= 9; i++) {
+                content.innerHTML += x + " X " + i + " = " + ret[i] + "<br>";
+            }
+        }
+
+        // ●●●메인 함수 만들기
+        function main() {
+            console.log("main 함수가 실행되었습니다.");
+            for (var n = 2; n <= 9; n++) {
+                var result = calculateNDan(n);    // n단의 결과값을 변수 result에 대입
+                printResult(n, result);     // n단과 결과값을 출력
+            }
+        }
+        main();
+
+        // ---●●함수●●---
+        // 1. 한 번에 한 가지 일을 할 것
+        // 2. 전역변수를 사용하지 말 것
+        // 3. 입력은 매개변수로 받고,
+        // 4. 결과는 리턴 또는 화면에 출력.
+        // ---●●---●●---
+
+        // ●스코프(scope):
+        //   → 변수에 접근할 수 있는 범위
+        //     ①전역 변수, ②지역 변수
+        // ●지역변수(local variable): 
+        //   → 함수 내부에서 선언된 지역 변수는 함수가 호출되면 생성되고 함수가 종료되면 소멸한다.
+        // ●전역변수(global variable): 
+        //   → 실행하는 특별한 진입점이 없고 코드가 로드되자마자 곧바로 해석되고 실행된다.
+        //   → var 키워드로 선언한 전역 변수는 전역 객체(window)의 property가 된다.
+        //     즉 전역 변수는 window의 프로퍼티가 된다. 전역 객체는 웹페이지 종료 시점까지 유효하며,
+        //   → 전역 변수 또한 웹페이지 종료 시점까지 유효하다. (긴 생명주기)
+        //     (전역변수 생명 주기 = window객체 생명 주기 = 애플리케이션(웹페이지)의 생명 주기)
+
+        // ➡︎ 변수의 스코프는 좁을수록 좋다
+
+    </script> 
+</body>
+</html>
