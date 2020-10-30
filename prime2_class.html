@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>소수 찾기</title>
+    <link rel="stylesheet" href="reset.css">
+    <style>
+        body {
+            background-color: #555;
+            padding: 3em;
+            color: #fff;
+        }
+        #title {
+            font-size: 2.3em;
+            font-weight: 600;
+            
+            width: 230px;
+            border: 5px solid goldenrod;
+            border-radius: 20px;
+            line-height: 2em;
+            text-align: center;
+        }
+        #result {
+            width: 500px;
+            margin-top: 20px;
+            border-radius: 15px;
+            background-color: #333;
+            padding: 2em;
+            line-height: 1.7;
+        }
+    </style>
+</head>
+<body>
+    <h1 id="title">소수 목록들</h1>
+    <div id="result"></div>
+    
+    <script>
+        // ●●numbers 객체 만들기
+        var numbers = {};
+
+        // ●●numbers 객체에 배열 생성
+        numbers.all = [];
+        numbers.prime = [];
+
+        // ●●numbers 객체에 메소드 생성
+
+        // 소수 판별 함수 작성
+        numbers.isPrime = function(number) {
+            for (var i = 2; i < number; i++) {
+                if (number % i == 0) {
+                    return false;
+                }
+            }
+            return true;
+        };
+
+        // 2부터 max_num까지의 정수 배열 all에 넣기
+        numbers.addAllNumbers = function(max_num) {
+            for (var i = 2; i <= max_num; i++) {
+                this.all.push(i);
+            }
+        };
+
+        // all 배열에 있는 모든 원소들을 isPrime메소드로 소수 판별
+        // isPrime의 함수 결과가 true이면 배열 prime에 넣기
+        numbers.calcPrimes = function() {
+            for (var i = 0; i < this.all.length; i++) {
+                var n = this.all[i];
+                if (this.isPrime(n)) {
+                    this.prime.push(n);
+                }
+            }
+        };
+
+        // 변수 ret을 만들어 소수의 갯수, 소수에 대한 정보를 대입.
+        // 배열 prime의 길이 = 소수의 갯수
+        numbers.getAllPrimeNumbers = function() {
+            var ret = "";
+            ret += "<h2>전체 소수의 갯수:" + this.prime.length + "</h2>\n";
+            for (var i = 0; i < this.prime.length; i++) {
+                ret += (i + 1) + "번째 소수: " + this.prime[i] + "<br>\n";
+            }
+            return ret;
+        };
+
+        // 2이상 10000이하의 정수를 배열 all에 넣기
+        numbers.addAllNumbers(10000);
+
+        // 배열 all에 있는 수를 소수 판별하고 배열 prime에 넣기
+        numbers.calcPrimes();
+
+        // 소수의 갯수, 소수를 출력
+        document.getElementById("result").innerHTML = numbers.getAllPrimeNumbers();
+
+    </script>
+</body>
+</html>
