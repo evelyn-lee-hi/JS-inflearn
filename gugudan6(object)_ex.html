@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>함수 활용 | 구구단 구현</title>
+    <link rel="stylesheet" href="reset.css">
+    <style>
+        body {
+            background-color: linen;
+            padding: 3em;
+        }
+        #header {
+            width: 270px;
+            background-color: tomato;
+            padding: 0.5em;
+            margin-bottom: 25px;
+            border-radius: 20px;
+
+            font-family:'Gill Sans', 'Gill Sans MT', 'Trebuchet MS', sans-serif;
+            font-size: 1.5rem;
+            text-align: center;
+            color: white;
+        }
+        #content {
+            width: 320px;
+            background-color: rgba(255, 255, 255, 0.5);
+            border-radius: 20px;
+            box-sizing: border-box;
+            padding-left: 1.3em;
+            /* h2의 margin-top적용을 시키기 위해서 padding 조금 추가해줌. */
+            padding-top: 0.3em;
+
+            color: #666;
+            line-height: 1.5;
+        }
+        h2 {
+            font-size: 1.3em;
+            font-weight: 700;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+    <header id="header">Gugudan Program</header>
+    <section id="content"></section>
+
+    <script>
+        var gugudan = {};
+        gugudan.calculateNDan = function(x) {
+            var ret = [];
+            for (var i = 1; i <= 9; i++) {
+                ret[i] = x * i;
+            }
+            return ret;
+        };
+
+        gugudan.printResult = function(x, ret) {
+            var content = document.getElementById("content");
+            content.innerHTML += "<h2>" + x + "단</h2>";
+            for (var i = 1; i <= 9; i++) {
+                content.innerHTML += x + " X " + i + " = " + ret[i] + "<br>";
+            }
+        };
+
+        function main() {
+            console.log("main 함수가 실행되었습니다.");
+            for(var n = 2; n <= 9; n++) {
+                var result = gugudan.calculateNDan(n);
+                gugudan.printResult(n, result);
+            }
+        }   
+        main();
+    </script> 
+</body>
+</html>
