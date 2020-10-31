@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>심화 | 구구단 구현</title>
+    <link rel="stylesheet" href="reset.css">
+    <style>
+        body {
+            background-color: linen;
+            padding: 3em;
+        }
+        #header {
+            width: 270px;
+            background-color: tomato;
+            padding: 0.5em;
+            margin-bottom: 25px;
+            border-radius: 20px;
+
+            font-family:'Gill Sans', 'Gill Sans MT', 'Trebuchet MS', sans-serif;
+            font-size: 1.5rem;
+            text-align: center;
+            color: white;
+        }
+        #answer {
+            width: 100px;
+            margin-left: 50px;
+            margin-right: 5px;
+        }
+        #btn {
+            border: 2px solid tomato;
+            border-radius: 8px;
+            background-color: transparent;
+            color: #555;
+
+        }
+        #content {
+            width: 320px;
+            background-color: rgba(255, 255, 255, 0.5);
+            border-radius: 20px;
+            box-sizing: border-box;
+            padding-left: 1.3em;
+            /* h2의 margin-top적용을 시키기 위해서 padding 조금 추가해줌. */
+            padding-top: 0.3em;
+            margin-top: 15px;
+
+            color: #666;
+            line-height: 1.5;
+        }
+        h2 {
+            font-size: 1.3em;
+            font-weight: 700;
+            margin-top: 15px;
+        }
+        
+    </style>
+</head>
+<body>
+    <header id="header">Gugudan Program</header>
+    <input type="text" id="answer" value="x,y 형식으로 작성"> 
+    <button id="btn" onclick="gugudan.read()">submit</button>
+    <section id="content"></section>
+
+    <script>
+        var gugudan = {};
+        gugudan.result = [];
+        gugudan.current = -1;
+        gugudan.read = function () {
+            document.getElementById("content").innerHTML = "";
+            var inputValue = document.getElementById("answer").value;
+            var valueArr = inputValue.split("");
+            this.calculate(valueArr[0], valueArr[2]);
+        }
+        gugudan.calculate = function(x, y) {
+            for(var i = 2; i <= x; i++) {
+                this.current = i;
+                for(var j = 0; j < y; j++) {
+                    this.result[j] = i * (j + 1);
+                }
+                this.print(y);
+            }
+        }
+        gugudan.print = function(y) {
+            var content = document.getElementById("content");
+            content.innerHTML += "<h2>" + this.current + "단</h2>";
+            for(var i = 0; i < y; i++) {
+                var a = this.current;
+                var b = (i + 1);
+                var c = this.result[i];
+                content.innerHTML += a + " X " + b + " = " + c + "<br>";
+            }
+        }
+    </script> 
+</body>
+</html>
